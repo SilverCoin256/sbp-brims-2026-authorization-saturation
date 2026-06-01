@@ -1,0 +1,23 @@
+---
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Authorization Saturation Simulation"
+type: software
+authors:
+  - given-names: Shauray
+    family-names: Gupta
+    affiliation: SM Shetty International School, Mumbai, India
+repository-code: "https://github.com/shauraygupta/authorization-saturation"
+abstract: >
+  Discrete-event simulation of state-dependent M/M/c queue modeling
+  authorization saturation in AI-governed institutions. Implements
+  threshold analysis, intervention comparison, and sigmoid sensitivity.
+keywords:
+  - queueing theory
+  - AI governance
+  - authorization saturation
+  - computational social science
+  - institutional overload
+license: MIT
+version: 1.0.0
+date-released: "2026-06-01"
