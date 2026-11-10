@@ -1,8 +1,8 @@
 # Authorization Saturation in AI-Governed Institutions
 
-Code and figures for my SBP-BRiMS 2026 paper. Built this during my junior year — it's a queueing model for what happens when AI generates decisions faster than humans can review them.
+Code and figures for my SBP-BRiMS 2026 paper. I built the model during my junior year to test when a queue of AI-generated decisions pushes reviewers from substantive checks to faster, less thorough reviews.
 
-— Shauray Gupta, SM Shetty International School, Mumbai
+Shauray Gupta, SM Shetty International School, Mumbai
 
 ## Quick start
 
@@ -11,15 +11,15 @@ pip install -r requirements.txt
 python3 cli.py --mode all
 ```
 
-That runs the sweep, intervention tests, and sensitivity analysis. Takes about 10 seconds.
+This runs the utilization sweep, intervention tests, and sensitivity analysis.
 
 ## What's in here
 
 ### The simulation (`simulate_authorization_saturation.py`)
 
-This is the main thing. It's a discrete-event simulation of an M/M/c queue where the servers switch from "substantive" to "ceremonial" mode when the queue gets too long. The switching threshold is T = k*c where k is what I call the institutional tolerance parameter.
+In the discrete-event M/M/c simulation, reviewers switch from substantive to ceremonial review when the queue reaches the model’s threshold. That threshold is `T = k*c`, where `c` is the number of reviewers and `k` is the tolerance parameter.
 
-The key output is the quality function Q̄(ρ_s) — how review quality drops as utilization increases.
+The simulation estimates mean review quality, Q̄(ρ_s), at different levels of utilization.
 
 ### CLI modes
 
@@ -35,7 +35,7 @@ python3 cli.py --mode sensitivity   # Binary vs sigmoid switching
 python3 generate_figures.py
 ```
 
-Drops everything in `figures/`. The main ones are `fig2_quality.pdf` and `fig3_interventions.pdf` — those are the ones in the paper. The `supp1` through `supp7` files are supplementary.
+The script writes figures to `figures/`. The tracked SVGs for the paper are [review quality](figures/fig2_quality.svg) and [interventions](figures/fig3_interventions.svg). The `supp*` files are supplementary.
 
 ### Tests
 
@@ -43,7 +43,7 @@ Drops everything in `figures/`. The main ones are `fig2_quality.pdf` and `fig3_i
 python3 test_simulation.py
 ```
 
-Seven tests — checks that quality is high at low load, drops at high load, capacity helps, sigmoid is smoother than binary, etc.
+The tests check how review quality responds to load, capacity, and the choice of switching rule.
 
 ### Compiling the paper
 
@@ -90,4 +90,4 @@ At k = 1.0, the institution saturates at ρ* = 0.50 — half its nominal capacit
 
 ## License
 
-MIT — use it however you want.
+The project identifies its license as MIT. This checkout omits the license text.
